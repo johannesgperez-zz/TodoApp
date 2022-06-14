@@ -5,6 +5,10 @@
 {% for task in tasks %}
 <ul>
 <li>{{task.title}}</li>
+<a href="{% url 'task_detail' task.pk %}">View</a>
+<a href="{% url 'task_update' task.pk %}">Update</a>
+<a href="{% url 'task_delete' task.pk %}">Delete</a>
 </ul>
 {% endfor %}
+<a href="{% url 'task_create' %}">Add a Task</a>
 {% endblock %}
