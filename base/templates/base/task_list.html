@@ -1,14 +1,32 @@
 
 {% extends 'base/base.html' %}
 {% block content %}
-<h1>List of Tasks</h1>
+
+<div class="container text-center">
+<h4>List of Tasks</h4>
+</div>
+
 {% for task in tasks %}
-<ul>
-<li>{{task.title}}</li>
-<a href="{% url 'task_detail' task.pk %}">View</a>
-<a href="{% url 'task_update' task.pk %}">Update</a>
-<a href="{% url 'task_delete' task.pk %}">Delete</a>
-</ul>
+<div class="task-wrapper">
+{% if task.completed %}
+<div>{{task.title}}</div>
+    <div>
+    <a href="{% url 'task_detail' task.pk %}"><i class="bi bi-eye"></i></a>
+    <a href="{% url 'task_update' task.pk %}"><i class="bi bi-pencil-fill"></i></a>
+    <a href="{% url 'task_delete' task.pk %}"><i class="bi bi-trash text-danger"></i></a>
+    </div>
+{% else %}
+<div>{{task.title}}</div>
+    <div>
+    <a href="{% url 'task_detail' task.pk %}"><i class="bi bi-eye"></i></a>
+    <a href="{% url 'task_update' task.pk %}"><i class="bi bi-pencil-fill"></i></a>
+    <a href="{% url 'task_delete' task.pk %}"><i class="bi bi-trash text-danger"></i></a>
+    </div>
+{% endif %}
+</div>
 {% endfor %}
+<div class="container text-center">
 <a href="{% url 'task_create' %}">Add a Task</a>
+</div>
 {% endblock %}
+

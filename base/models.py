@@ -9,7 +9,7 @@ class Task(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        ordering = ['completed']
+        ordering = ['completed', '-created']
     
     def __str__(self):
         return self.title

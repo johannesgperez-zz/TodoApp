@@ -1,19 +1,21 @@
-from django.shortcuts import redirect
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from django.contrib.auth.views import LoginView
-
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import (CreateView, DeleteView, FormView,
+                                       UpdateView)
+from django.views.generic.list import ListView
+
+from .forms import RegisterForm, TaskForm
 from .models import Task
+
 
 class LoginPage(LoginView):
     template_name = 'base/login.html'
-    fields = '__all__'
+    # form_class = LoginForm
     redirect_autheticated_user = True
     success_url = reverse_lazy('task_list')
 
@@ -22,7 +24,7 @@ class LoginPage(LoginView):
 
 class RegisterPage(FormView):
     template_name = 'base/register.html'
-    form_class = UserCreationForm
+    form_class = RegisterForm
     redirect_autheticated_user = True
     success_url = reverse_lazy('task_list')
 
@@ -62,7 +64,7 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'completed']
+    form_class = TaskForm
     template_name = 'base/task_create.html'
     success_url = reverse_lazy('task_list')
 
@@ -72,7 +74,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description', 'completed']
+    form_class = TaskForm
     template_name = 'base/task_update.html'
     success_url = reverse_lazy('task_list')
 
