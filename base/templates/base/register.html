@@ -3,9 +3,11 @@
 {% block content %}
 <div class="container text-center">
 <h1>Register</h1>
+    <div class="section">
     <form method="post">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
+    </div>
 </div>
 {% endblock %}

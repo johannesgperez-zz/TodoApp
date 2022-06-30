@@ -3,20 +3,20 @@
 {% block content %}
 
 <div class="container text-center">
-<h4>List of Tasks</h4>
+<h1>My Tasks</h1>
 </div>
-
+<div class="section">
 {% for task in tasks %}
 <div class="task-wrapper">
 {% if task.completed %}
-<div>{{task.title}}</div>
+<div class="task-completed">{{task.title}}</h4></div>
     <div>
     <a href="{% url 'task_detail' task.pk %}"><i class="bi bi-eye"></i></a>
     <a href="{% url 'task_update' task.pk %}"><i class="bi bi-pencil-fill"></i></a>
     <a href="{% url 'task_delete' task.pk %}"><i class="bi bi-trash text-danger"></i></a>
     </div>
 {% else %}
-<div>{{task.title}}</div>
+<div class="task-no-completed">{{task.title}}</div>
     <div>
     <a href="{% url 'task_detail' task.pk %}"><i class="bi bi-eye"></i></a>
     <a href="{% url 'task_update' task.pk %}"><i class="bi bi-pencil-fill"></i></a>
@@ -27,6 +27,7 @@
 {% endfor %}
 <div class="container text-center">
 <a href="{% url 'task_create' %}">Add a Task</a>
+</div>
 </div>
 {% endblock %}
 

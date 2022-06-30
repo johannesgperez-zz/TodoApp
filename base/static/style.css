@@ -4,6 +4,10 @@ body {
     padding-top: 25px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     max-width: 550px;
     margin: auto;
@@ -23,3 +27,17 @@ body {
     justify-content: space-between;
     padding: 20px;
 }
+
+.task-completed {
+    text-decoration: line-through;
+    font-weight: bolder;
+}
+
+.task-no-completed {
+    color: #1d3557;
+}
+
+.section {
+    padding: 20px;
+}
+

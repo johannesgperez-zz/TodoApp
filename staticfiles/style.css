@@ -1,0 +1,31 @@
+body {
+    /* background-color: #1d3557; */
+    background-color: crimson;
+    font-family: 'Poppins';
+    padding-top: 25px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 550px;
+    margin: auto;
+    background-color: #f1faee;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    color: #1d3557;
+    padding: 10px;
+}
+
+.task-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
