@@ -1,5 +1,13 @@
+:root {
+    --primary-color: #88B2E6;
+    --secondary-color: #e7f0fb;
+    --task-color: #001A2B;
+    --todo-color: #2f3030;
+    --maintitle-color: #000000;
+}
+    
 body {
-    background-color: #1d3557;
+    background-color: var(--primary-color);
     font-family: 'Poppins';
     padding-top: 25px;
 }
@@ -8,16 +16,31 @@ a {
     text-decoration: none;
 }
 
+.todo {
+    color: var(--todo-color);
+}
+
+.dark-theme {
+    --primary-color: #001A2B;
+    --secondary-color: #084066;
+    --task-color: #e1e1e1;
+    --todo-color: #f0f0f0;
+    --maintitle-color: #ffffff;
+}
+
 .container {
     max-width: 550px;
     margin: auto;
-    background-color: #f1faee;
+    background-color: var(--secondary-color);
+}
+
+.maintitle {
+    color: var(--maintitle-color);
 }
 
 .header {
     display: flex;
     justify-content: space-between;
-    color: #1d3557;
     padding: 10px;
 }
 
@@ -30,14 +53,19 @@ a {
 
 .task-completed {
     text-decoration: line-through;
-    font-weight: bolder;
+    color: var(--task-color);
 }
 
 .task-no-completed {
-    color: #1d3557;
+    color: var(--task-color);
 }
 
 .section {
     padding: 20px;
 }
 
+#icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

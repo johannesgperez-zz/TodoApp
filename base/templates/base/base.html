@@ -16,18 +16,33 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="{% url 'task_list' %}"><h4>TODO APP</h4></a>
+            <a href="{% url 'task_list' %}"><h4 class="todo">TODO APP</h4></a>
             {% if request.user.is_authenticated %}
-                Hello {{request.user.first_name}}!
+                <span class="todo">Hello {{request.user.first_name}}!</span>
             
-                    <a href="{% url 'logout' %}">Logout</a>
+                    <a href="{% url 'logout' %}" class="todo">Logout</a>
             {% else %}
-                <a href="{% url 'login' %}">Login</a>
-                <a href="{% url 'register' %}">Register</a>
+                <a href="{% url 'login' %}" class="todo">Login</a>
+                <a href="{% url 'register' %}" class="todo">Register</a>
             {% endif %}
+            <img src="{% static 'images/moon.png' %}" id="icon">
         </div>
             {% block content %}
             {% endblock %}
     </div>
+
+    <script>
+        var icon = document.getElementById("icon")
+        icon.onclick = function(){
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+                icon.src = "{% static 'images/sun.png' %}";
+            }else{
+                icon.src = "{% static 'images/moon.png' %}";
+            }
+        }
+    </script>
+
+
 </body>
 </html>

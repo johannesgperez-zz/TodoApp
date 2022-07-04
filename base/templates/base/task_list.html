@@ -2,9 +2,20 @@
 {% extends 'base/base.html' %}
 {% block content %}
 
+
+
 <div class="container text-center">
-<h1>My Tasks</h1>
+<h1 class="maintitle">My Tasks</h1>
 </div>
+
+<br>
+<div class="container">
+    <form method="GET">
+        <input class="form-control border-end-0 border rounded-pill" type="text" name="search-area" value="{{search_input}}" placeholder="Enter a task and press enter or leave blank for all">
+    </form>
+</div>
+
+
 <div class="section">
 {% for task in tasks %}
 <div class="task-wrapper">
@@ -26,7 +37,7 @@
 </div>
 {% endfor %}
 <div class="container text-center">
-<a href="{% url 'task_create' %}">Add a Task</a>
+<a href="{% url 'task_create' %}" class="todo">Add a Task</a>
 </div>
 </div>
 {% endblock %}
